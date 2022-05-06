@@ -1,5 +1,5 @@
 # Password-Generator-Homework
-<img src=".assets/images/password-generator-homework.png" alt="Password Generator screenshot">
+<img src="./assets/images/password-generator.png" alt="Password Generator screenshot">
 
 ## Purpose
 
