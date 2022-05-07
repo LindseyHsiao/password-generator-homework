@@ -16,6 +16,9 @@
 //THEN the password is either displayed in an alert or written to the page
 
 // Assignment code here
+//Query selectors
+var generateBtn = document.querySelector("#generate");
+var password = document.querySelector("#password");
 
 
 //variables for lowercase, uppercase, numeric, and/or special characters
@@ -23,18 +26,18 @@ var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
-var otionsVariable = "";
+var optionsVariable = "";
 
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", function writePassword(event) {
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-
-  //prevent sreen refresh on button cick
+  //Prevent sreen refresh on button cick
   event.preventDefault();
+
+  //Clear previous password
+  password.value === "";
+  var randomString = "";
 
   //Choose password variables
   var lowercaseLett = confirm("Do you want your password to have lowercase letters?");
@@ -44,8 +47,9 @@ function writePassword() {
   var passwordLength = prompt("Choose a password length between 8 and 128 characters.");
 
   //Check password length
-  if (passwordLength < 8 || passwordLength > 128) {
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     alert("Please try again, make sure it is a number from 8 to 128.");
+    var passwordLength = prompt("Choose a password length between 8 and 128 characters.");
   } 
   // Ensure at least one criteria is chosen 
   else if (lowercaseLett === false && uppercaseLett === false && num === false && specialChar === false) {
@@ -53,18 +57,32 @@ function writePassword() {
     var lowercaseLett = confirm("Do you want your password to have lowercase letters?");
     var uppercaseLett = confirm("Do you want your password to have uppercase letters?");
     var num = confirm("Do you want your password to have numbers?");
-    var specialCharacters = confirm("Do you want your password to have special characters?");
+    var specialChar = confirm("Do you want your password to have special characters?");
   }
 
-  
+  //Use selected criteria to generate password
+  if (lowercaseLett) {
+    optionsVariable += lowercaseAlphabet;
+  }
+  if (uppercaseLett) {
+    optionsVariable += uppercaseAlphabet;
+  }
+  if (num) {
+    optionsVariable += numbers;
+  }
+  if (specialChar) {
+    optionsVariable += specialCharacters;
+  }
 
-
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  //Generate random password based on selected criteria
+  for (var i = 0; i < passwordLength; i++) {
+    randomString += optionsVariable.charAt(Math.floor(Math.random() * optionsVariable.length));
+  }
+  password.value = randomString;
 
 }
+);
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//Call function
+ 
+//writePassword();
