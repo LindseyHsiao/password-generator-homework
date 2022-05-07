@@ -16,31 +16,26 @@
 //THEN the password is either displayed in an alert or written to the page
 
 // Assignment code here
-function promptUser() {
-  var length = prompt("What is the length of your passwrord?", 8)
-  if(length < 8 || length > 128) {
-    alert("Please pick a password length between 8 and 128")
-    return null
-  }
-  var lowercase = confirm("Would you like lowercase sharacters in your password?");
-  var uppercase = confirm("Would you like uppercase characters in your password?");
-  var numbers = confirm("Would you like numbers in your password?");
-  var special = confirm("Would you like special characters in you password?");
-  var userResponse = {
-    length, 
-    lowercase, 
-    uppercase, 
-    numbers, 
-    special
-  }
-  return userResponse;
-}
+
+
+//variables for lowercase, uppercase, numeric, and/or special characters
+var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var otionsVariable = "";
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  //prevent sreen refresh on button cick
+  event.preventDefault();
+
+  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -50,4 +45,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-promptUser();
