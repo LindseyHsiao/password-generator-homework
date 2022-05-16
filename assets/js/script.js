@@ -49,7 +49,7 @@ generateBtn.addEventListener("click", function writePassword(event) {
   //Check password length
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     alert("Please try again, make sure it is a number from 8 to 128.");
-    var passwordLength = prompt("Choose a password length between 8 and 128 characters.");
+    return "";
   } 
   // Ensure at least one criteria is chosen 
   else if (lowercaseLett === false && uppercaseLett === false && num === false && specialChar === false) {

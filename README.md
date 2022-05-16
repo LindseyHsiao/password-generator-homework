@@ -12,7 +12,7 @@ Create an application that can be used to generate a random password based on cr
 
 ## Website
 
-https://lindseyhsiao.github.io/password-generator-homework
+https://lindseyhsiao.github.io/password-generator-homework/
 
 
 
